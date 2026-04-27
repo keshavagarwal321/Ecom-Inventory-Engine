@@ -29,17 +29,19 @@ A production-grade Django REST Framework API for e-commerce applications with se
 
 ## Local Setup & Installation
 
+This project uses [uv](https://docs.astral.sh/uv/) for lightning-fast dependency management and virtual environment creation.
+
 ```powershell
 # Clone the repository
 git clone <repository-url>
 cd ecom_engine
 
-# Create virtual environment
-python -m venv venv
-.\venv\Scripts\Activate
+# Create a virtual environment and activate it using uv
+uv venv
+.\.venv\Scripts\Activate
 
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies instantly via uv
+uv pip install -r pyproject.toml  # (Or `uv sync` if using uv.lock)
 
 # Create .env file in project root
 # Add the following variables:
@@ -53,6 +55,8 @@ python manage.py migrate
 # Start development server
 python manage.py runserver
 ```
+
+> **Fallback**: If you prefer not to use uv, you can generate a `requirements.txt` file with `uv pip freeze > requirements.txt` and then use `pip install -r requirements.txt`.
 
 The API will be available at `http://127.0.0.1:8000/`.
 
